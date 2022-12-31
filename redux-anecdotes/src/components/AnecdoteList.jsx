@@ -6,7 +6,13 @@ import { setNotification } from "../reducers/notificationReducer";
 function AnecdoteList() {
     const dispatch = useDispatch();
     const anecdotes = useSelector((state) =>
-        [...state.anecdote].sort((a, b) => b.votes - a.votes)
+        [...state.anecdote]
+            .sort((a, b) => b.votes - a.votes)
+            .filter((anecdote) =>
+                anecdote.content
+                    .toLowerCase()
+                    .includes(state.filter.toLowerCase())
+            )
     );
 
     const vote = (id) => {
