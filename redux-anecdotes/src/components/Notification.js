@@ -2,13 +2,13 @@ import { connect } from "react-redux";
 
 const Notification = ({ notification }) => {
     const style = {
-        display: notification ? "block" : "none",
+        display: notification.message ? "block" : "none",
         border: "solid",
         padding: 10,
         borderWidth: 1,
     };
 
-    return <div style={style}>{notification}</div>;
+    return <div style={style}>{notification.message}</div>;
 };
 
 const mapStateToProps = ({ notification }) => {
